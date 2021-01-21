@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { flatMap } from 'lodash';
+
+/**
  * Internal dependencies
  */
 import { createBlock, findTransform } from '../factory';
@@ -19,7 +24,7 @@ export function htmlToBlocks( html ) {
 
 	doc.body.innerHTML = html;
 
-	return Array.from( doc.body.children ).flatMap( ( node ) => {
+	return flatMap( doc.body.children, ( node ) => {
 		const rawTransform = findTransform(
 			getRawTransforms(),
 			( { isMatch } ) => isMatch( node )
