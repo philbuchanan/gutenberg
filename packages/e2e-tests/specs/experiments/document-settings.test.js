@@ -59,12 +59,12 @@ describe( 'Document Settings', () => {
 			await navigationPanel.open();
 			await navigationPanel.backToRoot();
 			await navigationPanel.navigate( 'Templates' );
-			await navigationPanel.clickItemByText( 'Index' );
+			await navigationPanel.clickItemByText( 'Front Page' );
 
 			// Evaluate the document settings title
 			const actual = await getDocumentSettingsTitle();
 
-			expect( actual ).toEqual( 'Index' );
+			expect( actual ).toEqual( 'Front Page' );
 		} );
 
 		describe( 'and a template part is clicked in the template', () => {
@@ -92,11 +92,6 @@ describe( 'Document Settings', () => {
 			await navigationPanel.backToRoot();
 			await navigationPanel.navigate( 'Template Parts' );
 			await navigationPanel.clickItemByText( 'header' );
-
-			// TODO: Remove when toolbar supports text fields
-			expect( console ).toHaveWarnedWith(
-				'Using custom components as toolbar controls is deprecated. Please use ToolbarItem or ToolbarButton components instead. See: https://developer.wordpress.org/block-editor/components/toolbar-button/#inside-blockcontrols'
-			);
 
 			// Evaluate the document settings title
 			const actual = await getDocumentSettingsTitle();
